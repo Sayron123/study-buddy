@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Material Symbols Configuration */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+
+  /* Your custom UI panels */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .ai-gradient-bg {
+  background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+}
+  .dark .ai-gradient-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+  /* Active Sidebar Indicator */
+  .nav-active-pill {
+    @apply relative;
+  }
+
+  .nav-active-pill::before {
+    content: '';
+    @apply absolute -left-6 top-1/2 -translate-y-1/2 w-1 h-6 bg-teal-500 rounded-r;
+  }
+}
+
+/* Base styles for the layout */
+@layer base {
+  body {
+    @apply bg-background font-body text-on-surface antialiased overflow-hidden;
+  }
+}
