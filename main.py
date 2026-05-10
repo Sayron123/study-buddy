@@ -111,7 +111,7 @@ async def login(user: UserLogin):
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
     if not verify_password(user.password, db_user["password"]):
-        raise HTTPException(status_code=401, detail="Invalid credetials")
+        raise HTTPException(status_code=401, detail="Invalid credentials")
     
     token = create_access_token(data={"sub": db_user["email"]})
     return {"access_token": token, "token_type": "bearer"}
@@ -236,7 +236,7 @@ async def chat_ask(chat_id: str, message: ChatMessage, current_user: dict = Depe
     prompt =f"""
     You are Liwanag, a helpful AI study buddy for Filipino students.
     Always answer in Taglish (mix of Tagalog and English).
-    Make your explenation easy to understand.
+    Make your explanation easy to understand.
 
     Question: {message.question}
     """
@@ -363,7 +363,7 @@ async def library_chat(lib_id: str, message: LibraryChatMessage, current_user: d
         return {"answer": answer}
     except Exception as e: 
         print(f"AI Error: {e}")
-        raise HTTPException(status_code=503, detail="AI service unvailable. Please try again later.")
+        raise HTTPException(status_code=503, detail="AI service unavailable. Please try again later.")
 #FlashCARD REST API
 
 @app.post("/flashcards")
